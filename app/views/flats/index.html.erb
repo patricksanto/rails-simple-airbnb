@@ -1,0 +1,29 @@
+<div class="container">
+  <h1>All Our Flats</h1>
+  <p>All <%= @flats.count %> Flats</p>
+</div>
+
+<div class="container">
+  <div class="row">
+    <% @flats.each do |flat| %>
+      <div class="col-4 mb-4">
+        <div class="card" style="width: 18rem;">
+          <img src="https://images.unsplash.com/photo-1496417263034-38ec4f0b665a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=80" class="card-img-top" alt="...">
+          <div class="card-body ps-4">
+            <h5 class="card-title"><%= flat.name %></h5>
+            <p class="card-text"><%= flat.address %></p>
+            <i class="fa-solid fa-user"></i>
+            <span class="me-3"><%= flat.number_of_guest %></span>
+            <i class="fa-regular fa-euro-sign "></i>
+            <span><%= flat.price_per_night %></span>
+          </div>
+          <div class="card-header p-4">
+            <%= link_to "More info", flat_path(flat), class:'class="btn btn-primary btn-sm text-decoration-none '%>
+            <%= link_to "Edit", edit_flat_path(flat), class:'class="btn btn-warning btn-sm text-decoration-none ' %>
+            <%= link_to "Remove", flat_path(flat), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} , class:'class="btn btn-danger btn-sm text-decoration-none'%>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
